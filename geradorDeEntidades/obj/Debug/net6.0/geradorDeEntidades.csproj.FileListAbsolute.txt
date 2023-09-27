@@ -1,0 +1,14 @@
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.exe
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.deps.json
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.runtimeconfig.json
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.pdb
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.AssemblyInfoInputs.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.AssemblyInfo.cs
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.csproj.CoreCompileInputs.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\refint\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.pdb
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.genruntimeconfig.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\ref\geradorDeEntidades.dll
