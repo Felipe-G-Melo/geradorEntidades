@@ -1,5 +1,5 @@
 ﻿namespace geradorDeEntidades.Generates;
-public class GenerateRepositoryFile
+public class GenerateRepositoryFile : Utils
 {
     public string Entityname { get; private set; }
     public DirectoryInfo TypeormPath { get; private set; }
@@ -19,8 +19,8 @@ public class GenerateRepositoryFile
         using (StreamWriter sw = File.CreateText(pathSchema))
         {
             sw.WriteLine($"import {{ EntitySchema }} from 'typeorm';");
-            sw.WriteLine($"import {{ {FirstCharToUpper(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
-            sw.WriteLine($"\nexport const {Entityname}Schema = new EntitySchema<{FirstCharToUpper(Entityname)}>({{");
+            sw.WriteLine($"import {{ {ClearChar(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
+            sw.WriteLine($"\nexport const {NotClearFirstChar(Entityname)}Schema = new EntitySchema<{ClearChar(Entityname)}>({{");
             sw.WriteLine("});");
         }
     }
@@ -31,19 +31,12 @@ public class GenerateRepositoryFile
         string pathRepository = Path.Combine(TypeormPath.FullName, fileRepository);
         using (StreamWriter sw = File.CreateText(pathRepository))
         {
-            sw.WriteLine($"import {{ I{FirstCharToUpper(Entityname)}Repository }}from '@domain/{Entityname}/repository/i{Entityname}.repository';");
+            sw.WriteLine($"import {{ I{ClearChar(Entityname)}Repository }}from '@domain/{Entityname}/repository/i{Entityname}.repository';");
             sw.WriteLine($"import {{CrudRepository}} from '../abstractions/crud.repository';");
-            sw.WriteLine($"import {{ {FirstCharToUpper(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
-            sw.WriteLine($"\nexport class {FirstCharToUpper(Entityname)}TypeormRepository extends CrudRepository<{FirstCharToUpper(Entityname)}> implements I{FirstCharToUpper(Entityname)}Repository {{");
-            sw.WriteLine($"   override entityName = '{FirstCharToUpper(Entityname)}';");
+            sw.WriteLine($"import {{ {ClearChar(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
+            sw.WriteLine($"\nexport class {ClearChar(Entityname)}TypeormRepository extends CrudRepository<{ClearChar(Entityname)}> implements I{ClearChar(Entityname)}Repository {{");
+            sw.WriteLine($"   override entityName = '{ClearChar(Entityname)}';");
             sw.WriteLine("}");
         }
-    }
-
-    string FirstCharToUpper(string input)
-    {
-        if (String.IsNullOrEmpty(input))
-            throw new ArgumentException("Insira um nome válido");
-        return input.First().ToString().ToUpper() + input.Substring(1);
     }
 }

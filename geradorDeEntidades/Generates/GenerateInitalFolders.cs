@@ -7,6 +7,8 @@ public class GenerateInitalFolders
     public DirectoryInfo DomainPath { get; private set; }
     public DirectoryInfo ProviderPath { get; private set; }
     public DirectoryInfo UseCasePath { get; private set; }
+    public DirectoryInfo AppPath { get; private set; }
+    public DirectoryInfo AppDtoPath { get; private set; }
     public DirectoryInfo TypeormPath { get; private set; }
     public DirectoryInfo TypeormSchemaPath { get; private set; }
     public DirectoryInfo DomainEntityPath { get; private set; }
@@ -49,5 +51,9 @@ public class GenerateInitalFolders
 
         //CRIA AS PASTA PROVIDER E SUAS SUBPASTAS
         ProviderPath = EntityPath.CreateSubdirectory("providers");
+
+        //CRIA AS PASTA APP E SUAS SUBPASTAS
+        AppPath = EntityPath.CreateSubdirectory("app").CreateSubdirectory(EntityName);
+        AppDtoPath = AppPath.CreateSubdirectory("dto");
     }
 }

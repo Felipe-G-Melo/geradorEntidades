@@ -1,5 +1,5 @@
 ﻿namespace geradorDeEntidades.Generates;
-public class GenerateDomainFile
+public class GenerateDomainFile : Utils
 {
     public string EntityName { get; private set; }
     public DirectoryInfo DomainEntityPath { get; private set; }
@@ -67,12 +67,12 @@ public class GenerateDomainFile
         {
             //IMPORTS
             sw.WriteLine("import { Basic } from '@domain/basic/basic';");
-            sw.WriteLine("import { " + FirstCharToUpper(EntityName) + "Input } from '../input/" + EntityName + "-input';");
+            sw.WriteLine("import { " + ClearChar(EntityName) + "Input } from '../input/" + EntityName + "-input';");
             sw.WriteLine("import HttpError from '@domain/utils/errors/http-errors';");
-            sw.WriteLine($"import {EntityName}ValidatorFactory from '../validator/{EntityName}-validator';");
+            sw.WriteLine($"import {ClearChar(EntityName)}ValidatorFactory from '../validator/{EntityName}-validator';");
 
             //CLASS
-            sw.WriteLine("\nexport class " + FirstCharToUpper(EntityName) + " extends Basic {");
+            sw.WriteLine("\nexport class " + ClearChar(EntityName) + " extends Basic {");
 
             //ENTITY PROPERTIES
             foreach (var property in Properties)
@@ -81,21 +81,21 @@ public class GenerateDomainFile
             }
 
             //CONSTRUCTOR
-            sw.WriteLine("\n  constructor(props:" + FirstCharToUpper(EntityName) + "Input, id?:number){");
+            sw.WriteLine("\n  constructor(props:" + ClearChar(EntityName) + "Input, id?:number){");
             sw.WriteLine("      super();");
             sw.WriteLine("      Object.assign(this, props);");
             sw.WriteLine("      this.id = id;");
             sw.WriteLine("  }");
 
             //CREATE
-            sw.WriteLine("\n  static Create(props:" + FirstCharToUpper(EntityName) + "Input, id?:number){");
+            sw.WriteLine("\n  static Create(props:" + ClearChar(EntityName) + "Input, id?:number){");
             sw.WriteLine("      this.Validate(props);");
-            sw.WriteLine("      return new " + FirstCharToUpper(EntityName) + "(props, id);");
+            sw.WriteLine("      return new " + ClearChar(EntityName) + "(props, id);");
             sw.WriteLine("  }");
 
             //VALIDATE
-            sw.WriteLine("\n  static Validate(props:" + FirstCharToUpper(EntityName) + "Input){");
-            sw.WriteLine("      const validator = " + FirstCharToUpper(EntityName) + "ValidatorFactory.Create()");
+            sw.WriteLine("\n  static Validate(props:" + ClearChar(EntityName) + "Input){");
+            sw.WriteLine("      const validator = " + ClearChar(EntityName) + "ValidatorFactory.Create()");
             sw.WriteLine("      validator.Validate(props)");
             sw.WriteLine("      if(validator.errors) {");
             sw.WriteLine("          new HttpError({ errors: validator.errors }).BadRequest();");
@@ -111,7 +111,7 @@ public class GenerateDomainFile
         string pathInput = Path.Combine(DomainInputPath.FullName, fileInput);
         using (StreamWriter sw = File.CreateText(pathInput))
         {
-            sw.WriteLine("export type " + FirstCharToUpper(EntityName) + "Input = {");
+            sw.WriteLine("export type " + ClearChar(EntityName) + "Input = {");
             foreach (var property in InputProperties)
             {
                 sw.WriteLine("  " + property.Name + ": " + property.Type + ";");
@@ -122,15 +122,15 @@ public class GenerateDomainFile
 
     public void CreateRepositoryFile()
     {
-        string fileRepository = "i" + EntityName + "-repository.ts";
+        string fileRepository = "i" + EntityName + ".repository.ts";
         string pathRepository = Path.Combine(DomainRepositorytPath.FullName, fileRepository);
 
         using (StreamWriter sw = File.CreateText(pathRepository))
         {
             sw.WriteLine("/* eslint-disable @typescript-eslint/no-empty-interface */");
             sw.WriteLine("import { IRepository } from '@domain/basic/irepository';");
-            sw.WriteLine("import { " + FirstCharToUpper(EntityName) + " } from '../entities/" + EntityName + "';");
-            sw.WriteLine("export interface I" + FirstCharToUpper(EntityName) + "Repository extends IRepository<" + FirstCharToUpper(EntityName) + "> {");
+            sw.WriteLine("import { " + ClearChar(EntityName) + " } from '../entities/" + EntityName + "';");
+            sw.WriteLine("export interface I" + ClearChar(EntityName) + "Repository extends IRepository<" + ClearChar(EntityName) + "> {");
             sw.WriteLine("}");
         }
     }
@@ -144,10 +144,10 @@ public class GenerateDomainFile
         {
             //IMPORTS
             sw.WriteLine("import { ClassValidatorFields } from '@domain/utils/validations/class-validator-fields';");
-            sw.WriteLine("import { " + FirstCharToUpper(EntityName) + "Input } from '../input/" + EntityName + "-input';");
+            sw.WriteLine("import { " + ClearChar(EntityName) + "Input } from '../input/" + EntityName + "-input';");
 
             //CLASS
-            sw.WriteLine("export class " + FirstCharToUpper(EntityName) + "Rules {");
+            sw.WriteLine("export class " + ClearChar(EntityName) + "Rules {");
 
             //ENTITY PROPERTIES
             foreach (var property in InputProperties)
@@ -156,31 +156,24 @@ public class GenerateDomainFile
             }
 
             //CONSTRUCTOR
-            sw.WriteLine("  constructor(props: " + FirstCharToUpper(EntityName) + "Input) {");
+            sw.WriteLine("  constructor(props: " + ClearChar(EntityName) + "Input) {");
             sw.WriteLine("      Object.assign(this, props);");
             sw.WriteLine("  }");
             sw.WriteLine("}");
 
             //VALIDATE
-            sw.WriteLine("\nexport class " + FirstCharToUpper(EntityName) + "Validator extends ClassValidatorFields<" + FirstCharToUpper(EntityName) + "Rules> {");
-            sw.WriteLine("  Validate(data: " + FirstCharToUpper(EntityName) + "Rules): boolean {");
-            sw.WriteLine("      return super.validate(new " + FirstCharToUpper(EntityName) + "Rules(data));");
+            sw.WriteLine("\nexport class " + ClearChar(EntityName) + "Validator extends ClassValidatorFields<" + ClearChar(EntityName) + "Rules> {");
+            sw.WriteLine("  Validate(data: " + ClearChar(EntityName) + "Rules): boolean {");
+            sw.WriteLine("      return super.validate(new " + ClearChar(EntityName) + "Rules(data));");
             sw.WriteLine("  }");
             sw.WriteLine("}");
 
             //VALIDATOR FACTORY
-            sw.WriteLine("\nexport default class " + FirstCharToUpper(EntityName) + "ValidatorFactory {");
+            sw.WriteLine("\nexport default class " + ClearChar(EntityName) + "ValidatorFactory {");
             sw.WriteLine("  static Create(){");
-            sw.WriteLine("      return new " + FirstCharToUpper(EntityName) + "Validator();");
+            sw.WriteLine("      return new " + ClearChar(EntityName) + "Validator();");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
-    }
-
-    string FirstCharToUpper(string input)
-    {
-        if (String.IsNullOrEmpty(input))
-            throw new ArgumentException("Insira um nome válido");
-        return input.First().ToString().ToUpper() + input.Substring(1);
     }
 }

@@ -1,5 +1,5 @@
 ﻿namespace geradorDeEntidades.Generates;
-public class GenerateUseCaseFile
+public class GenerateUseCaseFile : Utils
 {
     public string EntityName { get; private set; }
     public DirectoryInfo UseCasePath { get; private set; }
@@ -18,15 +18,15 @@ public class GenerateUseCaseFile
         string useCasePath = Path.Combine(UseCasePath.FullName, useCaseName);
         using(StreamWriter sw = File.CreateText(useCasePath))
         {
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)}Input }} from '@domain/{EntityName}/input/{EntityName}-input';");
-            sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)}Input }} from '@domain/{EntityName}/input/{EntityName}-input';");
+            sw.WriteLine($"import {{ I{ClearChar(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}.repository';");
             sw.WriteLine($"import {{ ICreateExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Create{FirstCharToUpper(EntityName)} implements ICreateExecute<{FirstCharToUpper(EntityName)}Input, {FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(input: {FirstCharToUpper(EntityName)}Input): Promise<{FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"         const {EntityName} = {FirstCharToUpper(EntityName)}.Create(input);");
-            sw.WriteLine($"         return await this.{EntityName}Repository.Create({EntityName});");
+            sw.WriteLine($"\nexport class Create{ClearChar(EntityName)} implements ICreateExecute<{ClearChar(EntityName)}Input, {ClearChar(EntityName)}> {{");
+            sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
+            sw.WriteLine($"\n  async Execute(input: {ClearChar(EntityName)}Input): Promise<{ClearChar(EntityName)}> {{");
+            sw.WriteLine($"         const {NotClearFirstChar(EntityName)} = {ClearChar(EntityName)}.Create(input);");
+            sw.WriteLine($"         return await this.{NotClearFirstChar(EntityName)}Repository.Create({NotClearFirstChar(EntityName)});");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
@@ -38,16 +38,16 @@ public class GenerateUseCaseFile
         string useCasePath = Path.Combine(UseCasePath.FullName, useCaseName);
         using (StreamWriter sw = File.CreateText(useCasePath))
         {
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)}Input }} from '@domain/{EntityName}/input/{EntityName}-input';");
-            sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)}Input }} from '@domain/{EntityName}/input/{EntityName}-input';");
+            sw.WriteLine($"import {{ I{ClearChar(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}.repository';");
             sw.WriteLine($"import {{ IUpdateExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Update{FirstCharToUpper(EntityName)} implements IUpdateExecute<{FirstCharToUpper(EntityName)}Input, {FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(input: {FirstCharToUpper(EntityName)}Input, id:number): Promise<{FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"         await this.{EntityName}Repository.GetById(id);");
-            sw.WriteLine($"         const {EntityName} = {FirstCharToUpper(EntityName)}.Create(input, id);");
-            sw.WriteLine($"         return await this.{EntityName}Repository.Update({EntityName});");
+            sw.WriteLine($"\nexport class Update{ClearChar(EntityName)} implements IUpdateExecute<{ClearChar(EntityName)}Input, {ClearChar(EntityName)}> {{");
+            sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
+            sw.WriteLine($"\n  async Execute(input: {ClearChar(EntityName)}Input, id:number): Promise<{ClearChar(EntityName)}> {{");
+            sw.WriteLine($"         await this.{NotClearFirstChar(EntityName)}Repository.GetById(id);");
+            sw.WriteLine($"         const {NotClearFirstChar(EntityName)} = {ClearChar(EntityName)}.Create(input, id);");
+            sw.WriteLine($"         return await this.{NotClearFirstChar(EntityName)}Repository.Update({NotClearFirstChar(EntityName)});");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
@@ -61,13 +61,13 @@ public class GenerateUseCaseFile
         using (StreamWriter sw = File.CreateText(useCasePath))
         {
             sw.WriteLine($"import {{ FilterObject, OrderObject }} from '@domain/basic/irepository';");
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
-            sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
+            sw.WriteLine($"import {{ I{ClearChar(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}.repository';");
             sw.WriteLine($"import {{ IGetAllExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Get{FirstCharToUpper(EntityName)} implements IGetAllExecute<{FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(page: number, recordsPerPage: number, filter?: FilterObject, order?: OrderObject): Promise<{{total: number; data: {FirstCharToUpper(EntityName)}[] }}> {{");
-            sw.WriteLine($"         return await this.{EntityName}Repository.GetAll(page, recordsPerPage, filter, order);");
+            sw.WriteLine($"\nexport class Get{ClearChar(EntityName)} implements IGetAllExecute<{ClearChar(EntityName)}> {{");
+            sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
+            sw.WriteLine($"\n  async Execute(page: number, recordsPerPage: number, filter?: FilterObject, order?: OrderObject): Promise<{{total: number; data: {ClearChar(EntityName)}[] }}> {{");
+            sw.WriteLine($"         return await this.{NotClearFirstChar(EntityName)}Repository.GetAll(page, recordsPerPage, filter, order);");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
@@ -80,13 +80,13 @@ public class GenerateUseCaseFile
 
         using (StreamWriter sw = File.CreateText(useCasePath))
         {
-            sw.WriteLine($"import {{ {FirstCharToUpper(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
-            sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
+            sw.WriteLine($"import {{ {ClearChar(EntityName)} }} from '@domain/{EntityName}/entities/{EntityName}';");
+            sw.WriteLine($"import {{ I{ClearChar(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}.repository';");
             sw.WriteLine($"import {{ IGetByIdExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Get{FirstCharToUpper(EntityName)}ById implements IGetByIdExecute<{FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(id:number): Promise<{FirstCharToUpper(EntityName)}> {{");
-            sw.WriteLine($"         return await this.{EntityName}Repository.GetById(id);");
+            sw.WriteLine($"\nexport class Get{ClearChar(EntityName)}ById implements IGetByIdExecute<{ClearChar(EntityName)}> {{");
+            sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
+            sw.WriteLine($"\n  async Execute(id:number): Promise<{ClearChar(EntityName)}> {{");
+            sw.WriteLine($"         return await this.{NotClearFirstChar(EntityName)}Repository.GetById(id);");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
@@ -99,22 +99,15 @@ public class GenerateUseCaseFile
 
         using (StreamWriter sw = File.CreateText(useCasePath))
         {
-            sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
+            sw.WriteLine($"import {{ I{ClearChar(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}.repository';");
             sw.WriteLine($"import {{ IDeleteExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Delete{FirstCharToUpper(EntityName)} implements IDeleteExecute {{");
-            sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
+            sw.WriteLine($"\nexport class Delete{ClearChar(EntityName)} implements IDeleteExecute {{");
+            sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
             sw.WriteLine($"\n  async Execute(id:number): Promise<void> {{");
-            sw.WriteLine($"         await this.{EntityName}Repository.GetById(id);");
-            sw.WriteLine($"         await this.{EntityName}Repository.Remove(id);");
+            sw.WriteLine($"         await this.{NotClearFirstChar(EntityName)}Repository.GetById(id);");
+            sw.WriteLine($"         await this.{NotClearFirstChar(EntityName)}Repository.Remove(id);");
             sw.WriteLine("  }");
             sw.WriteLine("}");
         }
-    }
-
-    string FirstCharToUpper(string input)
-    {
-        if (String.IsNullOrEmpty(input))
-            throw new ArgumentException("Insira um nome válido");
-        return input.First().ToString().ToUpper() + input.Substring(1);
     }
 }

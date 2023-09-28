@@ -7,19 +7,19 @@ try
 {
     //Generate Domain
     var folders = new GenerateInitalFolders(nomeDaEntidade);
-    var generateFile = new GenerateDomainFile(
+    var generateDomainFile = new GenerateDomainFile(
         nomeDaEntidade,
         folders.DomainEntityPath,
         folders.DomainInputPath,
         folders.DomainRepositoryPath,
         folders.DomainValidatorPath
         );
-    generateFile.SetProperties();
-    generateFile.SetInputProperts();
-    generateFile.CreateEntityFile();
-    generateFile.CreateInputFile();
-    generateFile.CreateRepositoryFile();
-    generateFile.CreateValidatorFile();
+    generateDomainFile.SetProperties();
+    generateDomainFile.SetInputProperts();
+    generateDomainFile.CreateEntityFile();
+    generateDomainFile.CreateInputFile();
+    generateDomainFile.CreateRepositoryFile();
+    generateDomainFile.CreateValidatorFile();
 
     //Generate UseCases
     var generateUseCaseFile = new GenerateUseCaseFile(nomeDaEntidade, folders.UseCasePath);
@@ -37,6 +37,13 @@ try
     //Generate Provider
     var generateProvider = new GenerateProvider(nomeDaEntidade, folders.ProviderPath);
     generateProvider.CreateProviderFile();
+
+    //Generate App
+    var generateAppFile = new GenerateAppFile(nomeDaEntidade, folders.AppPath, folders.AppDtoPath, generateDomainFile.InputProperties);
+    generateAppFile.GenerateDtoFile();
+    generateAppFile.GenerateServiceFile();
+    generateAppFile.GenerateModuleFile();
+    generateAppFile.GenerateController();
 
     Console.WriteLine("Pasta criada com sucesso");
 }
