@@ -85,7 +85,7 @@ public class GenerateUseCaseFile
             sw.WriteLine($"import {{ IGetByIdExecute }} from '@use-cases/abstractions/iexecute';");
             sw.WriteLine($"\nexport class Get{FirstCharToUpper(EntityName)}ById implements IGetByIdExecute<{FirstCharToUpper(EntityName)}> {{");
             sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(id:number): Promise<{{total: number; data: {FirstCharToUpper(EntityName)}[] }}> {{");
+            sw.WriteLine($"\n  async Execute(id:number): Promise<{FirstCharToUpper(EntityName)}> {{");
             sw.WriteLine($"         return await this.{EntityName}Repository.GetById(id);");
             sw.WriteLine("  }");
             sw.WriteLine("}");
@@ -101,7 +101,7 @@ public class GenerateUseCaseFile
         {
             sw.WriteLine($"import {{ I{FirstCharToUpper(EntityName)}Repository }} from '@domain/{EntityName}/repository/i{EntityName}-repository';");
             sw.WriteLine($"import {{ IDeleteExecute }} from '@use-cases/abstractions/iexecute';");
-            sw.WriteLine($"\nexport class Get{FirstCharToUpper(EntityName)}ById implements IDeleteExecute {{");
+            sw.WriteLine($"\nexport class Delete{FirstCharToUpper(EntityName)} implements IDeleteExecute {{");
             sw.WriteLine($"  constructor(private readonly {EntityName}Repository: I{FirstCharToUpper(EntityName)}Repository) {{ }}");
             sw.WriteLine($"\n  async Execute(id:number): Promise<void> {{");
             sw.WriteLine($"         await this.{EntityName}Repository.GetById(id);");

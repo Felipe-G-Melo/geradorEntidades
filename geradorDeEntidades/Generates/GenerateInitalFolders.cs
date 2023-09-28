@@ -5,6 +5,7 @@ public class GenerateInitalFolders
     public string EntityName { get; private set; }
     public DirectoryInfo EntityPath { get; private set; }
     public DirectoryInfo DomainPath { get; private set; }
+    public DirectoryInfo ProviderPath { get; private set; }
     public DirectoryInfo UseCasePath { get; private set; }
     public DirectoryInfo TypeormPath { get; private set; }
     public DirectoryInfo TypeormSchemaPath { get; private set; }
@@ -45,5 +46,8 @@ public class GenerateInitalFolders
         //CRIA AS PASTA TYPEORM E SUAS SUBPASTAS
         TypeormPath = EntityPath.CreateSubdirectory("typeorm").CreateSubdirectory(EntityName);
         TypeormSchemaPath = TypeormPath.CreateSubdirectory("schemas");
+
+        //CRIA AS PASTA PROVIDER E SUAS SUBPASTAS
+        ProviderPath = EntityPath.CreateSubdirectory("providers");
     }
 }

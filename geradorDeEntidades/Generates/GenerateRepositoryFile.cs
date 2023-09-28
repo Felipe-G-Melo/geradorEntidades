@@ -20,8 +20,8 @@ public class GenerateRepositoryFile
         {
             sw.WriteLine($"import {{ EntitySchema }} from 'typeorm';");
             sw.WriteLine($"import {{ {FirstCharToUpper(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
-            sw.WriteLine($"export const {Entityname}Schema = new EntitySchema<{FirstCharToUpper(Entityname)}>({{");
-            sw.WriteLine("}");
+            sw.WriteLine($"\nexport const {Entityname}Schema = new EntitySchema<{FirstCharToUpper(Entityname)}>({{");
+            sw.WriteLine("});");
         }
     }
 
@@ -31,10 +31,10 @@ public class GenerateRepositoryFile
         string pathRepository = Path.Combine(TypeormPath.FullName, fileRepository);
         using (StreamWriter sw = File.CreateText(pathRepository))
         {
-            sw.WriteLine($"import {{ I{FirstCharToUpper(Entityname)} }}from '@domain/{Entityname}/repository/i{Entityname}.repository';");
+            sw.WriteLine($"import {{ I{FirstCharToUpper(Entityname)}Repository }}from '@domain/{Entityname}/repository/i{Entityname}.repository';");
             sw.WriteLine($"import {{CrudRepository}} from '../abstractions/crud.repository';");
             sw.WriteLine($"import {{ {FirstCharToUpper(Entityname)} }} from '@domain/{Entityname}/entities/{Entityname}';");
-            sw.WriteLine($"export class {FirstCharToUpper(Entityname)}TypeormRepository extends CrudRepository<{FirstCharToUpper(Entityname)}> implements I{Entityname}Repository {{");
+            sw.WriteLine($"\nexport class {FirstCharToUpper(Entityname)}TypeormRepository extends CrudRepository<{FirstCharToUpper(Entityname)}> implements I{FirstCharToUpper(Entityname)}Repository {{");
             sw.WriteLine($"   override entityName = '{FirstCharToUpper(Entityname)}';");
             sw.WriteLine("}");
         }

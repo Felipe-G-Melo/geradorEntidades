@@ -66,9 +66,10 @@ public class GenerateDomainFile
         using (StreamWriter sw = File.CreateText(pathEntity))
         {
             //IMPORTS
-            sw.WriteLine("import { Basic } from './basic';");
+            sw.WriteLine("import { Basic } from '@domain/basic/basic';");
             sw.WriteLine("import { " + FirstCharToUpper(EntityName) + "Input } from '../input/" + EntityName + "-input';");
             sw.WriteLine("import HttpError from '@domain/utils/errors/http-errors';");
+            sw.WriteLine($"import {EntityName}ValidatorFactory from '../validator/{EntityName}-validator';");
 
             //CLASS
             sw.WriteLine("\nexport class " + FirstCharToUpper(EntityName) + " extends Basic {");
@@ -80,7 +81,7 @@ public class GenerateDomainFile
             }
 
             //CONSTRUCTOR
-            sw.WriteLine("\n  contructor(props:" + FirstCharToUpper(EntityName) + "Input, id?:number){");
+            sw.WriteLine("\n  constructor(props:" + FirstCharToUpper(EntityName) + "Input, id?:number){");
             sw.WriteLine("      super();");
             sw.WriteLine("      Object.assign(this, props);");
             sw.WriteLine("      this.id = id;");
@@ -88,6 +89,7 @@ public class GenerateDomainFile
 
             //CREATE
             sw.WriteLine("\n  static Create(props:" + FirstCharToUpper(EntityName) + "Input, id?:number){");
+            sw.WriteLine("      this.Validate(props);");
             sw.WriteLine("      return new " + FirstCharToUpper(EntityName) + "(props, id);");
             sw.WriteLine("  }");
 
@@ -114,13 +116,13 @@ public class GenerateDomainFile
             {
                 sw.WriteLine("  " + property.Name + ": " + property.Type + ";");
             }
-            sw.WriteLine("}");
+            sw.WriteLine("};");
         }
     }
 
     public void CreateRepositoryFile()
     {
-        string fileRepository = EntityName + "-repository.ts";
+        string fileRepository = "i" + EntityName + "-repository.ts";
         string pathRepository = Path.Combine(DomainRepositorytPath.FullName, fileRepository);
 
         using (StreamWriter sw = File.CreateText(pathRepository))
@@ -141,7 +143,7 @@ public class GenerateDomainFile
         using (StreamWriter sw = File.CreateText(pathValidator))
         {
             //IMPORTS
-            sw.WriteLine("import { ClassValidatorFields } from '@domain/utils/validators/class-validator-fields';");
+            sw.WriteLine("import { ClassValidatorFields } from '@domain/utils/validations/class-validator-fields';");
             sw.WriteLine("import { " + FirstCharToUpper(EntityName) + "Input } from '../input/" + EntityName + "-input';");
 
             //CLASS

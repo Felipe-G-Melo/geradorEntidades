@@ -34,6 +34,10 @@ try
     generateRepositoryFile.GenerateSchemaFile();
     generateRepositoryFile.GenerateRepository();
 
+    //Generate Provider
+    var generateProvider = new GenerateProvider(nomeDaEntidade, folders.ProviderPath);
+    generateProvider.CreateProviderFile();
+
     Console.WriteLine("Pasta criada com sucesso");
 }
 catch (Exception e)
