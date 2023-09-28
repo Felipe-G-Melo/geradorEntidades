@@ -1,0 +1,5 @@
+C:\Users\felip\OneDrive\Área de Trabalho\geradorDeEntidades.exe
+C:\Users\felip\OneDrive\Área de Trabalho\geradorDeEntidades.dll
+C:\Users\felip\OneDrive\Área de Trabalho\geradorDeEntidades.deps.json
+C:\Users\felip\OneDrive\Área de Trabalho\geradorDeEntidades.runtimeconfig.json
+C:\Users\felip\OneDrive\Área de Trabalho\geradorDeEntidades.pdb

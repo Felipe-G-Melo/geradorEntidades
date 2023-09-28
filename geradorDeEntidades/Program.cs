@@ -29,6 +29,10 @@ try
     generateUseCaseFile.GetByIdUseCaseFile();
     generateUseCaseFile.DeleteUseCaseFile();
 
+    //Generate Repository
+    var generateRepositoryFile = new GenerateRepositoryFile(nomeDaEntidade, folders.TypeormPath, folders.TypeormSchemaPath);
+    generateRepositoryFile.GenerateSchemaFile();
+    generateRepositoryFile.GenerateRepository();
 
     Console.WriteLine("Pasta criada com sucesso");
 }
