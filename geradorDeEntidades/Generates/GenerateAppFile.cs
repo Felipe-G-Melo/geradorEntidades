@@ -46,7 +46,7 @@ public class GenerateAppFile : Utils
                 $"import {{Create{ClearChar(EntityName)}}} from '@use-cases/{EntityName}/create-{EntityName}';" +
                 $"import {{Update{ClearChar(EntityName)}}} from '@use-cases/{EntityName}/update-{EntityName}';" +
                 $"import {{Get{ClearChar(EntityName)}ById}} from '@use-cases/{EntityName}/get-{EntityName}-by-id';" +
-                $"import {{Update{ClearChar(EntityName)}}} from '@use-cases/{EntityName}/delete-{EntityName}';" +
+                $"import {{Delete{ClearChar(EntityName)}}} from '@use-cases/{EntityName}/delete-{EntityName}';" +
                 $"import {{Get{ClearChar(EntityName)}}} from '@use-cases/{EntityName}/get-{EntityName}';" +
                 "@Injectable()" +
                 $"export class {ClearChar(EntityName)}Service extends GenericService<" +
@@ -86,10 +86,10 @@ public class GenerateAppFile : Utils
             sw.WriteLine("import { Module } from '@nestjs/common';" +
                 $"import {{{ClearChar(EntityName)}Service}} from './{EntityName}.service';" +
                 $"import {{{ClearChar(EntityName)}Controller }} from './{EntityName}.controller';" +
-                $"import {{{ClearChar(EntityName)}Provider}} from 'src/providers/{EntityName}.provider';" +
+                $"import {{{NotClearFirstChar(EntityName)}Provider}} from 'src/providers/{EntityName}.provider';" +
                 "@Module({" +
                 $"  controllers: [{ClearChar(EntityName)}Controller]," +
-                $"  providers: [{ClearChar(EntityName)}Service, ...Object.values({ClearChar(EntityName)}Provider)]," +
+                $"  providers: [{ClearChar(EntityName)}Service, ...Object.values({NotClearFirstChar(EntityName)}Provider)]," +
                 "})" +
                 $"export class {ClearChar(EntityName)}Module {{}}");
         }
