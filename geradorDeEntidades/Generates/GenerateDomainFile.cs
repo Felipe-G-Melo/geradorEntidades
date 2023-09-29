@@ -31,12 +31,22 @@ public class GenerateDomainFile : Utils
         while (Flag)
         {
             Count++;
-            Console.Write($"\nDigite o nome da propriedade {Count}: ");
+            Console.Write("\nDigite o");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.Write(" NOME ");
+            Console.ResetColor();
+            Console.Write($"da propriedade {Count}: ");
             string nomeDaPropriedade = Console.ReadLine();
-            Console.Write($"Digite o tipo da propriedade {Count}: ");
+            Console.Write("Digite o");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write(" TIPO ");
+            Console.ResetColor();
+            Console.Write($"da propriedade {Count}: ");
             string tipoDaPropriedade = Console.ReadLine();
             Properties.Add(new Property(nomeDaPropriedade, tipoDaPropriedade));
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Deseja adicionar mais uma propriedade? (s/n)");
+            Console.ResetColor();
             string resposta = Console.ReadLine();
             if (resposta == "n")
             {
@@ -50,7 +60,11 @@ public class GenerateDomainFile : Utils
         Console.WriteLine("\nQUAIS PROPRIEDADES TERÃO NO INPUT ? ");
         foreach (var property in Properties)
         {
-            Console.WriteLine($"\nA propriedade {property.Name} terá no input? (s/n)");
+            Console.Write("\nA propriedade");
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.Write($" {property.Name.ToUpper()} ");
+            Console.ResetColor();
+            Console.Write("terá no input? (s/n)\n");
             string resposta = Console.ReadLine();
             if (resposta == "s")
             {

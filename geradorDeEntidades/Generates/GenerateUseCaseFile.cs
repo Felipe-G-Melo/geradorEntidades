@@ -66,7 +66,7 @@ public class GenerateUseCaseFile : Utils
             sw.WriteLine($"import {{ IGetAllExecute }} from '@use-cases/abstractions/iexecute';");
             sw.WriteLine($"\nexport class Get{ClearChar(EntityName)} implements IGetAllExecute<{ClearChar(EntityName)}> {{");
             sw.WriteLine($"  constructor(private readonly {NotClearFirstChar(EntityName)}Repository: I{ClearChar(EntityName)}Repository) {{ }}");
-            sw.WriteLine($"\n  async Execute(page: number, recordsPerPage: number, filter?: FilterObject, order?: OrderObject): Promise<{{total: number; data: {ClearChar(EntityName)}[] }}> {{");
+            sw.WriteLine($"\n  async Execute(page: number, recordsPerPage: number, filter?: FilterObject[], order?: OrderObject): Promise<{{total: number; data: {ClearChar(EntityName)}[] }}> {{");
             sw.WriteLine($"         return await this.{NotClearFirstChar(EntityName)}Repository.GetAll(page, recordsPerPage, filter, order);");
             sw.WriteLine("  }");
             sw.WriteLine("}");

@@ -12,3 +12,17 @@ C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\refint\geradorDeEn
 C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.pdb
 C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.genruntimeconfig.cache
 C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\ref\geradorDeEntidades.dll
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.exe
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.deps.json
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.runtimeconfig.json
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.dll
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\bin\Debug\net6.0\geradorDeEntidades.pdb
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.AssemblyInfoInputs.cache
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.AssemblyInfo.cs
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.csproj.CoreCompileInputs.cache
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.dll
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\refint\geradorDeEntidades.dll
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.pdb
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\geradorDeEntidades.genruntimeconfig.cache
+C:\Users\felip\OneDrive\Área de Trabalho\dev\geradorDeEntidades\geradorDeEntidades\obj\Debug\net6.0\ref\geradorDeEntidades.dll

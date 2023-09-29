@@ -1,0 +1,14 @@
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Release\net6.0\win-x64\geradorDeEntidades.exe
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Release\net6.0\win-x64\geradorDeEntidades.deps.json
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Release\net6.0\win-x64\geradorDeEntidades.runtimeconfig.json
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Release\net6.0\win-x64\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\bin\Release\net6.0\win-x64\geradorDeEntidades.pdb
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.AssemblyInfoInputs.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.AssemblyInfo.cs
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.csproj.CoreCompileInputs.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\refint\geradorDeEntidades.dll
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.pdb
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\geradorDeEntidades.genruntimeconfig.cache
+C:\dev\geradorDeEntidades\geradorDeEntidades\obj\Release\net6.0\win-x64\ref\geradorDeEntidades.dll

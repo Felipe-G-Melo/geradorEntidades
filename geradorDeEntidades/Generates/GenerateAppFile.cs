@@ -120,6 +120,7 @@ public class GenerateAppFile : Utils
                 $"import {{Create{ClearChar(EntityName)}Dto}} from './dto/create-{EntityName}.dto';" +
                 "import { ApiQuery, ApiTags } from '@nestjs/swagger';" +
                 "import { JwtGuard } from '../auth/login/jwt.guard';" +
+                "import { FilterObject } from '@domain/basic/irepository';"+
                 "@UseGuards(JwtGuard)" +
                 $"@ApiTags('{ClearChar(EntityName)}')" +
                 $"@Controller('{EntityName}')" +
@@ -131,8 +132,6 @@ public class GenerateAppFile : Utils
                 "  }" +
                 "  @ApiQuery({ name: 'page', required: false })" +
                 "  @ApiQuery({ name: 'limit', required: false })" +
-                "  @ApiQuery({ name: 'searchColumn', required: false })" +
-                "  @ApiQuery({ name: 'searchValue', required: false })" +
                 "  @ApiQuery({ name: 'orderBy', required: false })" +
                 "  @ApiQuery({ name: 'orderDirection', required: false })" +
                 "  @UsePipes(new ValidationPipe({ transform: true }))" +
@@ -140,16 +139,14 @@ public class GenerateAppFile : Utils
                 "\n async FindAll(" +
                 "   @Query('page') page: number," +
                 "    @Query('limit') limit: number," +
-                "    @Query('searchColumn') searchColumn: string," +
-                "    @Query('searchValue') searchValue: string," +
+                "    @Query('filter') filter: FilterObject[]," +
                 "    @Query('orderBy') orderBy: string," +
                 "    @Query('orderDirection') orderDirection: string," +
                 "  ) {" +
                 $"    return await this.{NotClearFirstChar(EntityName)}Service.FindAll(" +
                 "      page," +
                 "      limit," +
-                "     searchColumn," +
-                "     searchValue," +
+                "      filter," +
                 "      orderBy," +
                 "      orderDirection," +
                 "    );" +

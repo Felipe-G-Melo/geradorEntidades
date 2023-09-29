@@ -31,6 +31,12 @@ public class GenerateInitalFolders
 
     private void CreateInitialFolders()
     {
+
+        if (!Directory.Exists(@"C:\dev\"))
+        {
+            Directory.CreateDirectory(@"C:\dev\");
+        }
+
         //CRIA A PASTA DA ENTIDADE
         EntityPath = Directory.CreateDirectory(SourcePath);
 
